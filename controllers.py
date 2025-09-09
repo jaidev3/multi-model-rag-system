@@ -1,19 +1,24 @@
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile
+from services import healthService, listDocumentsService, queryService, uploadDocumentsService
 
 rag_router = APIRouter()
 
 @rag_router.post("/documents/upload")
-async def upload_documents(file: UploadFile = File(...)):
-    return {"message": "Documents uploaded successfully", "file": file.filename}
+async def upload_documents(file: UploadFile):
+    result = await uploadDocumentsService(file)
+    return result
 
 @rag_router.get("/documents/")
 async def list_documents():
-    return {"message": "Documents listed successfully"}
+    result = await listDocumentsService()
+    return result
 
 @rag_router.post("/query")
 async def query(query: str):
-    return {"message": "Query processed successfully"}
+    result = await queryService(query)
+    return result
 
 @rag_router.get("/health")
 async def health():
-    return {"message": "OK"}
+    result = await healthService()
+    return result
