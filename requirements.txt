@@ -1,0 +1,17 @@
+uvicorn
+fastapi
+python-multipart
+requests
+langchain
+langchain-openai
+langchain-community
+langchain-core
+sqlalchemy
+pydantic
+aiosqlite
+greenlet
+langchain-text-splitters
+python-dotenv
+langchain[google-genai]
+langchain-google-genai
+langchain-chroma
